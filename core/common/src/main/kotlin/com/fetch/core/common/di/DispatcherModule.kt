@@ -1,8 +1,8 @@
-package di
+package com.fetch.core.common.di
 
-import annotations.DefaultDispatcher
-import annotations.IoDispatcher
-import annotations.MainDispatcher
+import com.fetch.core.common.annotations.DefaultDispatcher
+import com.fetch.core.common.annotations.IoDispatcher
+import com.fetch.core.common.annotations.MainDispatcher
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

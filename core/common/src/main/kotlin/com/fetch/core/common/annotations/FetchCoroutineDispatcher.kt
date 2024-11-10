@@ -1,4 +1,4 @@
-package annotations
+package com.fetch.core.common.annotations
 
 import javax.inject.Qualifier
 
