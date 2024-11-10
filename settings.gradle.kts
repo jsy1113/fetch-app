@@ -22,3 +22,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "Fetch App"
 include(":app")
+include(":core")
+include(":core:common")
