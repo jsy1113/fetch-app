@@ -24,4 +24,3 @@ rootProject.name = "Fetch App"
 include(":app")
 include(":core")
 include(":core:common")
-include(":core:navigation")
