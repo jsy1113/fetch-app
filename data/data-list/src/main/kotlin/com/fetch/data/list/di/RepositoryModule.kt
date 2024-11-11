@@ -14,6 +14,6 @@ abstract class RepositoryModule {
 
     @Binds
     @Singleton
-    internal abstract fun bindsEmployeeRepository(itemRepositoryImpl: ItemRepositoryImpl): ItemRepository
+    internal abstract fun bindsListRepository(itemRepositoryImpl: ItemRepositoryImpl): ItemRepository
 
 }
