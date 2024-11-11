@@ -22,6 +22,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
+import com.fetch.feature.list.HomeRoute
 import com.fetch.navigation.TopLevelDestination
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -68,6 +69,7 @@ fun FetchComposeApp() {
                 startDestination = TopLevelDestination.Home
             ) {
                 composable<TopLevelDestination.Home> {
+                    HomeRoute()
                 }
             }
         }
