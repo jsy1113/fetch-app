@@ -18,3 +18,5 @@ Fetch app
 ## other notes
 - This is on kotlin 2.0.20. Strong skipping mode is enabled, allowing me to skip some of the rememberedLambda's
 - App should handle most of the configuration change. i.e darkmode, orientation, etc.
+- Focused on optimizing recomposition, marking things immutable or stable.
+
