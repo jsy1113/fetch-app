@@ -1,5 +1,5 @@
 plugins {
-    alias(libs.plugins.fetch.android.compose.feature)
+    alias(libs.plugins.fetch.android.library)
     alias(libs.plugins.fetch.android.compose.library)
 }
 

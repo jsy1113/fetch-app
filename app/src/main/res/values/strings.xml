@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Fetch App</string>
+    <string name="content_desc_home">Home</string>
+    <string name="home_bottom_tab_string">Home</string>
 </resources>
