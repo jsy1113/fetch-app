@@ -23,8 +23,6 @@ class AndroidComposeLibraryPlugin : Plugin<Project> {
 
                     add("implementation", platform(bom))
                     add("implementation", getLibrary("androidx-ui-tooling-preview"))
-                    add("implementation", getLibrary("coil-kt"))
-                    add("implementation", getLibrary("coil-kt-compose"))
 
                     add("debugImplementation", getLibrary("androidx-ui-tooling"))
                     add("debugImplementation", getLibrary("androidx-ui-test-manifest"))
@@ -33,7 +31,6 @@ class AndroidComposeLibraryPlugin : Plugin<Project> {
                     add("testImplementation", getLibrary("turbine"))
                     add("testImplementation", getLibrary("junit"))
 
-                    add("androidTestImplementation", getLibrary("coil-test"))
                     add("androidTestImplementation", platform(bom))
                     add("androidTestImplementation", getLibrary("androidx-ui-test-junit4"))
                 }
