@@ -28,6 +28,11 @@ class ItemRepositoryImpl @Inject constructor(
      * Filtering out first to improve performance
      * Sort the item first, to improve performance and meet the requirements easier
      * Group last.
+     *
+     *
+     * Questions: something like this needed? for string sorting?
+     * it.substringAfter("item ").toIntOrNull() ?: 0
+     *
      * **/
     override suspend fun getFetchList(): Result<Map<Int, List<ItemVo>>> {
         return withContext(ioDispatcher) {
