@@ -23,4 +23,6 @@ dependencyResolutionManagement {
 rootProject.name = "Fetch App"
 include(":app")
 include(":core")
+include(":core:network")
 include(":core:common")
+include(":data:data-list")
