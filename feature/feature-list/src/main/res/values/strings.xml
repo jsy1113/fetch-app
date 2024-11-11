@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="feature_list_error_message">Error: %1$s</string>
+    <string name="feature_list_is_empty_message">List is empty, try refreshing</string>
+</resources>

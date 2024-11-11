@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="content_desc_error_icon">error_icon</string>
+    <string name="feature_list_error_message">hello</string>
+    <string name="feature_list_is_empty_message" />
+</resources>
