@@ -13,7 +13,7 @@ android {
             buildConfigField(
                 "String",
                 "BASE_URL",
-                "\"https://fetch-hiring.s3.amazonaws.com/hiring.json\""
+                "\"https://fetch-hiring.s3.amazonaws.com/\""
             )
         }
         release {
