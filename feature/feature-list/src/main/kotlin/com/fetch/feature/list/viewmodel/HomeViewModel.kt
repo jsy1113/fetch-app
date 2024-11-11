@@ -44,15 +44,12 @@ class HomeViewModel @Inject constructor(
             _screenState.tryEmit(HomeScreenUiState.Loading)
 
             val response = repository.getFetchList()
-            val listItemMap = response.getOrDefault(emptyMap())
-            val flattenedListState = mutableListOf<ListItemState>()
-            listItemMap.keys.map { key ->
-                flattenedListState.add(ListItemState.Header(key))
-                listItemMap[key]?.forEach {
-                    flattenedListState.add(ListItemState.Item(it.id, it.listId, it.name))
+            val listItemMap = response.getOrDefault(emptyMap()).flatMap { (key, items) ->
+                listOf(ListItemState.Header(key)) + items.map {
+                    ListItemState.Item(it.id, it.listId, it.name)
                 }
             }
-            _listUiState.tryEmit(flattenedListState.toImmutableList())
+            _listUiState.tryEmit(listItemMap.toImmutableList())
 
             val newScreenState =
                 if (response.isSuccess) (HomeScreenUiState.Idle)
