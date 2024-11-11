@@ -47,13 +47,6 @@ class AndroidLibraryPlugin : Plugin<Project> {
                 add("implementation", getLibrary("retrofit.kotlinx.serialization"))
                 add("implementation", getLibrary("okhttp"))
                 add("implementation", getLibrary("kotlinx-collections-immutable"))
-                add("implementation", getLibrary("androidx-room-ktx"))
-                add("implementation", getLibrary("androidx-room-runtime"))
-                add("ksp", getLibrary("androidx-room-compiler"))
-                add(
-                    "annotationProcessor", getLibrary("androidx-room-compiler")
-                )
-
 
                 add("testImplementation", getLibrary("kotlinx.coroutines.test"))
                 add("testImplementation", getLibrary("mockk"))
