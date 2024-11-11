@@ -6,15 +6,16 @@ import androidx.lifecycle.viewModelScope
 import com.fetch.data.list.repository.ItemRepository
 import com.fetch.feature.list.model.ListItemState
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.collections.immutable.ImmutableList
-import kotlinx.collections.immutable.persistentListOf
-import kotlinx.collections.immutable.toImmutableList
+import kotlinx.collections.immutable.ImmutableMap
+import kotlinx.collections.immutable.persistentMapOf
+import kotlinx.collections.immutable.toImmutableMap
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
+import okhttp3.internal.toImmutableList
 import javax.inject.Inject
 
 
@@ -30,26 +31,26 @@ class HomeViewModel @Inject constructor(
         HomeScreenUiState.Loading
     )
 
-    private val _listUiState = MutableStateFlow<ImmutableList<ListItemState>>(
-        persistentListOf()
+    private val _listUiState = MutableStateFlow<ImmutableMap<Int, List<ListItemState>>>(
+        persistentMapOf()
     )
 
-    val listUiState: StateFlow<ImmutableList<ListItemState>> =
+    val listUiState: StateFlow<ImmutableMap<Int, List<ListItemState>>> =
         _listUiState.onStart {
             fetchListItem()
-        }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), persistentListOf())
+        }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), persistentMapOf())
 
     fun fetchListItem() {
         viewModelScope.launch {
             _screenState.tryEmit(HomeScreenUiState.Loading)
 
             val response = repository.getFetchList()
-            val listItemMap = response.getOrDefault(emptyMap()).flatMap { (key, items) ->
-                listOf(ListItemState.Header(key)) + items.map {
-                    ListItemState.Item(it.id, it.listId, it.name)
-                }
-            }
-            _listUiState.tryEmit(listItemMap.toImmutableList())
+            val itemMap = response.getOrDefault(emptyMap())
+            val listItemMap = itemMap.mapValues { value ->
+                value.value.map { ListItemState(it.id, it.listId, it.name) }.toImmutableList()
+            }.toImmutableMap()
+
+            _listUiState.tryEmit(listItemMap)
 
             val newScreenState =
                 if (response.isSuccess) (HomeScreenUiState.Idle)

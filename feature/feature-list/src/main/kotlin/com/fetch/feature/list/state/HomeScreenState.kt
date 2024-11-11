@@ -10,12 +10,12 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.fetch.feature.list.model.ListItemState
 import com.fetch.feature.list.viewmodel.HomeScreenUiState
 import com.fetch.feature.list.viewmodel.HomeViewModel
-import kotlinx.collections.immutable.ImmutableList
+import kotlinx.collections.immutable.ImmutableMap
 
 @Stable
 data class HomeScreenState(
     val homeScreenUiState: HomeScreenUiState,
-    val listUiState: ImmutableList<ListItemState>,
+    val listUiStateMap: ImmutableMap<Int, List<ListItemState>>,
     val homeScreenAction: (HomeScreenAction) -> Unit,
 )
 
@@ -41,7 +41,7 @@ fun rememberHomeScreenState(viewModel: HomeViewModel = hiltViewModel()): HomeScr
     return remember(homeScreenUiState, listUiState, onAction) {
         HomeScreenState(
             homeScreenUiState = homeScreenUiState,
-            listUiState = listUiState,
+            listUiStateMap = listUiState,
             homeScreenAction = onAction
         )
     }
